@@ -131,6 +131,22 @@
     .course-card li::before { content: "→ "; color: var(--primary); font-weight: 700; }
     .course-card .go { font-weight: 600; color: var(--primary); font-size: .9rem; margin-top: 4px; }
 
+    /* Column card (home) */
+    .column-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow-sm); padding: 28px; border-left: 4px solid var(--primary);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .column-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .column-source { font-size: .8125rem; color: var(--text-muted); }
+    .column-card h3 { font-size: 1.375rem; margin-top: 4px; }
+    .column-author { font-size: .875rem; color: var(--text-muted); margin-top: -4px; }
+    .column-lead { font-size: .9375rem; }
+    .column-points { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 8px; }
+    .column-points li { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+    .column-points b { color: var(--primary-hover); font-size: .9375rem; }
+    .column-points span { font-size: .8125rem; color: var(--text-muted); }
+
     /* Step card */
     .step {
       background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm);
@@ -236,7 +252,8 @@
     @media (max-width: 640px) {
       .topbar { padding: 0 12px; gap: 8px; }
       .topbar-title { font-size: .9375rem; }
-      .course-grid { grid-template-columns: 1fr; }
+      .course-grid, .column-points { grid-template-columns: 1fr; }
+      .column-card { padding: 22px 18px; }
       .hero { padding: 28px 22px; }
       .hero h1, .session-header h1 { font-size: 1.5rem; }
       .step { padding: 20px 16px 16px; }
@@ -320,6 +337,24 @@
           <span class="go">실습 시작하기 →</span>
         </a>
       </div>
+
+      <article class="column-card">
+        <div class="column-meta">
+          <span class="badge badge--primary">📰 연수 전 읽을거리</span>
+          <span class="column-source">한국교육신문 · 2026. 5. 7.</span>
+        </div>
+        <h3>학습도 과제도 AI로 뚝딱, 평가는 딜레마</h3>
+        <p class="column-author">박병준 (경남 창원여고 교사 · 경상디지털교육자연합 총괄리더)</p>
+        <p class="column-lead">AI 시대에 평가는 무엇을 봐야 할까? 결과물이 아니라 <b>학생의 사고가 실제로 자랐는지</b>를 보는 평가로 바꾸자는 제안입니다. 이번 연수 실습의 문제의식이기도 합니다.</p>
+        <ul class="column-points">
+          <li><b>사고의 내재화</b><span>AI 없이도 스스로 생각할 힘이 생겼는가</span></li>
+          <li><b>과정의 투명성</b><span>AI를 어떻게 썼는지 드러내는가</span></li>
+          <li><b>메타인지적 성찰</b><span>산출물을 비판적으로 되돌아보는가</span></li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn-outline" href="https://hangyo.com/news/article.html?no=107611" target="_blank" rel="noopener">칼럼 전문 읽기 <span class="ext">↗</span></a>
+        </div>
+      </article>
 
       <div class="callout callout--tip">💡 <span><b>준비물:</b> 크롬 브라우저와 구글 계정(학교 계정 또는 개인 계정)을 준비해 주세요. 진행 상황은 이 브라우저에만 저장됩니다.</span></div>
     </section>
