@@ -155,12 +155,24 @@
 
     /* Slides gallery (session 1) */
     .slides-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 24px; display: flex; flex-direction: column; gap: 16px; }
-    .slides { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .slide { display: flex; flex-direction: column; text-align: left; padding: 0; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); overflow: hidden; cursor: zoom-in; font-family: inherit; color: var(--text); transition: border-color .2s, box-shadow .2s, transform .2s; }
-    .slide:hover { border-color: var(--primary); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .slide img { width: 100%; aspect-ratio: 2.1 / 1; object-fit: cover; object-position: top; background: #fff; display: block; border-bottom: 1px solid var(--border); }
-    .slide span { display: flex; align-items: center; gap: 8px; padding: 10px 12px; font-size: .875rem; font-weight: 600; }
-    .slide span b { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--primary-light); color: var(--primary-hover); display: grid; place-items: center; font-size: .75rem; }
+    .carousel { display: flex; flex-direction: column; gap: 12px; }
+    .carousel-viewport { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-sm); background: #fff; touch-action: pan-y; }
+    .carousel-track { display: flex; transition: transform .4s ease; }
+    .slide { flex: 0 0 100%; padding: 0; border: 0; background: #fff; cursor: zoom-in; display: block; }
+    .slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; display: block; }
+    .carousel-nav {
+      position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--border); background: rgba(255,255,255,.92); color: var(--text-strong);
+      font-size: 1.75rem; line-height: 1; cursor: pointer; box-shadow: var(--shadow-md); opacity: .85; transition: opacity .2s, background .2s;
+    }
+    .carousel-nav:hover { opacity: 1; background: #fff; color: var(--primary); }
+    .carousel-prev { left: 10px; } .carousel-next { right: 10px; }
+    .carousel-foot { display: flex; align-items: center; gap: 12px; }
+    .carousel-count { flex-shrink: 0; font-size: .8125rem; font-weight: 700; color: var(--primary-hover); background: var(--primary-light); padding: 2px 10px; border-radius: 99px; font-variant-numeric: tabular-nums; }
+    .carousel-caption { flex: 1; min-width: 0; font-size: .9rem; font-weight: 600; color: var(--text-strong); }
+    .carousel-dots { display: flex; gap: 6px; flex-shrink: 0; }
+    .carousel-dots button { width: 8px; height: 8px; border-radius: 99px; border: 0; padding: 0; background: var(--border); cursor: pointer; transition: width .25s, background .25s; }
+    .carousel-dots button.on { width: 22px; background: var(--primary); }
     .slides-source { font-size: .75rem; color: var(--text-muted); }
 
     /* Lightbox */
@@ -317,7 +329,12 @@
     @media (max-width: 640px) {
       .topbar { padding: 0 12px; gap: 8px; }
       .topbar-title { font-size: .9375rem; }
-      .course-grid, .column-points, .slides { grid-template-columns: 1fr; }
+      .course-grid, .column-points { grid-template-columns: 1fr; }
+      .carousel-nav { width: 34px; height: 34px; font-size: 1.375rem; }
+      .carousel-prev { left: 6px; } .carousel-next { right: 6px; }
+      .carousel-foot { flex-wrap: wrap; }
+      .carousel-caption { order: 3; flex-basis: 100%; }
+      .carousel-dots { margin-left: auto; }
       .slides-card { padding: 18px 14px; }
       .lb-stage { padding: 0 8px 16px; }
       .lb-nav { width: 40px; height: 40px; font-size: 1.5rem; background: rgba(15,23,42,.55); }
@@ -415,6 +432,29 @@
         </a>
       </div>
 
+      <div class="slides-card">
+        <div class="flow-title">🧭 나아가며: AI 시대의 교-수-평-기 <span class="flow-example">클릭하면 크게 볼 수 있어요</span></div>
+        <div class="carousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <button class="slide" type="button"><img src="images/p42.jpg" alt="Lodge & Loble (2026): 인지 오프로딩의 두 얼굴"></button>
+              <button class="slide" type="button"><img src="images/p43.jpg" alt="AI 디지털 시대의 교-수-평-기 방향성: 투명성과 메타인지" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/p44.jpg" alt="경상남도교육청 AI 디지털 기반 평가 대원칙" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/p45.jpg" alt="투명한 성찰을 이끄는 과정 평가 설계안" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/p46.jpg" alt="AI 시대, 평가 패러다임의 근본적 전환" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/p47.jpg" alt="결론: 교사의 새로운 역할, 오케스트라 지휘자" loading="lazy"></button>
+            </div>
+            <button class="carousel-nav carousel-prev" type="button" aria-label="이전 장표">‹</button>
+            <button class="carousel-nav carousel-next" type="button" aria-label="다음 장표">›</button>
+          </div>
+          <div class="carousel-foot">
+            <span class="carousel-count"></span>
+            <span class="carousel-caption"></span>
+            <span class="carousel-dots"></span>
+          </div>
+        </div>
+      </div>
+
       <article class="column-card">
         <div class="column-meta">
           <span class="badge badge--primary">📰 연수 전 읽을거리</span>
@@ -447,11 +487,24 @@
 
       <div class="slides-card">
         <div class="flow-title">🖼️ 수업 설계 원리 장표 <span class="flow-example">클릭하면 크게 볼 수 있어요</span></div>
-        <div class="slides">
-          <button class="slide" type="button"><img src="images/slide1.jpg" alt="핵심 교육 원리 1: 교수의 제1원리(Merrill, 2002)" loading="lazy"><span><b>1</b>핵심 교육 원리 1: 교수의 제1원리</span></button>
-          <button class="slide" type="button"><img src="images/slide2.jpg" alt="핵심 교육 원리 2: 피드백의 원리" loading="lazy"><span><b>2</b>핵심 교육 원리 2: 피드백의 원리</span></button>
-          <button class="slide" type="button"><img src="images/slide3.jpg" alt="평가와 피드백 루프: 교사와 AI의 상호보완적 관계" loading="lazy"><span><b>3</b>평가와 피드백 루프 (교사 × AI)</span></button>
-          <button class="slide" type="button"><img src="images/slide4.jpg" alt="AI 챗봇 프롬프트 예시: 교육용 프롬프트 해부도" loading="lazy"><span><b>4</b>AI 챗봇 프롬프트 해부도</span></button>
+        <div class="carousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <button class="slide" type="button"><img src="images/p34.jpg" alt="AI 챗봇 기능을 활용한 논쟁적 글쓰기 교수 전략"></button>
+              <button class="slide" type="button"><img src="images/p35.jpg" alt="학습 환경: Brisk Teaching 글쓰기 기능 (학습자 화면 · 교사 대시보드)" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/p36.jpg" alt="핵심 교육 원리 1: 교수의 제1원리 (Merrill, 2002)" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/p37.jpg" alt="핵심 교육 원리 2: 피드백의 원리" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/p38.jpg" alt="평가와 피드백 루프: 교사와 AI의 상호보완적 관계" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/p39.jpg" alt="AI 챗봇 프롬프트 예시: 교육용 프롬프트 해부도" loading="lazy"></button>
+            </div>
+            <button class="carousel-nav carousel-prev" type="button" aria-label="이전 장표">‹</button>
+            <button class="carousel-nav carousel-next" type="button" aria-label="다음 장표">›</button>
+          </div>
+          <div class="carousel-foot">
+            <span class="carousel-count"></span>
+            <span class="carousel-caption"></span>
+            <span class="carousel-dots"></span>
+          </div>
         </div>
         <p class="slides-source">출처: 박병준, 이영주 (2026). Merrill의 교수 제1원리에 근거한 AI 챗봇 기반 논쟁적 글쓰기 수업 설계원리 및 챗봇 프롬프트 개발. 교육정보미디어연구, 32(2), 849-881.</p>
       </div>
@@ -809,26 +862,66 @@
     window.addEventListener('hashchange', route);
     route();
 
-    // Slide lightbox
-    const slides = [...document.querySelectorAll('.slide')];
+    // Slide carousels + lightbox
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lb-img');
-    let cur = 0;
+    let lbCarousel = null;
+
+    function onSwipe(el, fn) {
+      let x0 = null;
+      el.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+      el.addEventListener('touchend', e => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 50) fn(dx < 0 ? 1 : -1);
+        x0 = null;
+      });
+    }
+
+    const carousels = [...document.querySelectorAll('.carousel')].map(root => {
+      const track = root.querySelector('.carousel-track');
+      const items = [...root.querySelectorAll('.slide')];
+      const dots = root.querySelector('.carousel-dots');
+      const c = { items, idx: 0 };
+      items.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.setAttribute('aria-label', `${i + 1}번 장표`);
+        d.addEventListener('click', () => c.go(i));
+        dots.appendChild(d);
+      });
+      c.go = i => {
+        c.idx = (i + items.length) % items.length;
+        track.style.transform = `translateX(-${c.idx * 100}%)`;
+        root.querySelector('.carousel-count').textContent = `${c.idx + 1} / ${items.length}`;
+        root.querySelector('.carousel-caption').textContent = items[c.idx].querySelector('img').alt;
+        [...dots.children].forEach((d, j) => d.classList.toggle('on', j === c.idx));
+      };
+      root.querySelector('.carousel-prev').addEventListener('click', () => c.go(c.idx - 1));
+      root.querySelector('.carousel-next').addEventListener('click', () => c.go(c.idx + 1));
+      items.forEach((it, i) => it.addEventListener('click', () => openLb(c, i)));
+      onSwipe(root.querySelector('.carousel-viewport'), d => c.go(c.idx + d));
+      c.go(0);
+      return c;
+    });
+
     function showSlide(i) {
-      cur = (i + slides.length) % slides.length;
-      const img = slides[cur].querySelector('img');
+      lbCarousel.go(i);
+      const img = lbCarousel.items[lbCarousel.idx].querySelector('img');
       lbImg.src = img.src; lbImg.alt = img.alt;
       document.getElementById('lb-caption').textContent = img.alt;
-      document.getElementById('lb-count').textContent = `${cur + 1} / ${slides.length}`;
+      document.getElementById('lb-count').textContent = `${lbCarousel.idx + 1} / ${lbCarousel.items.length}`;
     }
-    function openLb(i) { showSlide(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+    function openLb(c, i) {
+      lbCarousel = c; showSlide(i);
+      lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+    }
     function closeLb() {
       if (document.fullscreenElement) document.exitFullscreen();
       lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = '';
     }
-    slides.forEach((s, i) => s.addEventListener('click', () => openLb(i)));
-    document.getElementById('lb-prev').addEventListener('click', () => showSlide(cur - 1));
-    document.getElementById('lb-next').addEventListener('click', () => showSlide(cur + 1));
+    document.getElementById('lb-prev').addEventListener('click', () => showSlide(lbCarousel.idx - 1));
+    document.getElementById('lb-next').addEventListener('click', () => showSlide(lbCarousel.idx + 1));
     document.getElementById('lb-close').addEventListener('click', closeLb);
     document.getElementById('lb-full').addEventListener('click', () => {
       if (document.fullscreenElement) document.exitFullscreen();
@@ -838,17 +931,10 @@
     document.addEventListener('keydown', e => {
       if (!lb.classList.contains('open')) return;
       if (e.key === 'Escape' && !document.fullscreenElement) closeLb();
-      if (e.key === 'ArrowLeft') showSlide(cur - 1);
-      if (e.key === 'ArrowRight') showSlide(cur + 1);
+      if (e.key === 'ArrowLeft') showSlide(lbCarousel.idx - 1);
+      if (e.key === 'ArrowRight') showSlide(lbCarousel.idx + 1);
     });
-    let touchX = null;
-    lb.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-    lb.addEventListener('touchend', e => {
-      if (touchX === null) return;
-      const dx = e.changedTouches[0].clientX - touchX;
-      if (Math.abs(dx) > 50) showSlide(cur + (dx < 0 ? 1 : -1));
-      touchX = null;
-    });
+    onSwipe(lb, d => showSlide(lbCarousel.idx + d));
 
     // Mobile menu
     document.getElementById('menu-toggle').addEventListener('click', () => document.body.classList.toggle('nav-open'));
