@@ -388,8 +388,7 @@
         <ul class="nav-sub">
           <li><a href="#s2-1" data-step="s2-1">시트 사본 · 웹앱 배포</a></li>
           <li><a href="#s2-2" data-step="s2-2">업스테이지 API 키 발급</a></li>
-          <li><a href="#s2-3" data-step="s2-3">논박 챗봇 프롬프트</a></li>
-          <li><a href="#s2-4" data-step="s2-4">바이브코딩 프롬프트 (심화)</a></li>
+          <li><a href="#s2-3" data-step="s2-3">바이브코딩 프롬프트 (심화)</a></li>
         </ul>
       </li>
     </ul>
@@ -431,8 +430,7 @@
           <ul>
             <li>구글시트 사본 · 웹앱 배포</li>
             <li>업스테이지 API 키 발급</li>
-            <li>논박 챗봇 시스템 프롬프트 예시</li>
-            <li>(심화) 바이브코딩 PRD 프롬프트</li>
+            <li>(심화) 바이브코딩 프롬프트 · 논박 챗봇 프롬프트</li>
           </ul>
           <span class="go">실습 시작하기 →</span>
         </a>
@@ -620,7 +618,7 @@
         <div class="eyebrow">PART 2</div>
         <h1>AI 피드백 수용일지 템플릿 만들기</h1>
         <p>AI가 학생의 제안서를 논박하면, 학생은 그 피드백을 받아들일지 스스로 판단해 일지에 적고 글을 고칩니다. 구글시트와 앱스스크립트, 업스테이지 AI로 이 흐름을 만들어 봅니다.</p>
-        <div class="badges"><span class="badge badge--primary">실습 3단계 + 심화 1</span><span class="badge">Google Sheets</span><span class="badge">Apps Script</span><span class="badge">Upstage AI</span></div>
+        <div class="badges"><span class="badge badge--primary">실습 2단계 + 심화 1</span><span class="badge">Google Sheets</span><span class="badge">Apps Script</span><span class="badge">Upstage AI</span></div>
       </div>
 
       <div class="flow-card">
@@ -738,50 +736,11 @@
       <article class="step" id="s2-3" data-step="s2-3">
         <div class="step-head">
           <div class="step-num">2-3</div>
-          <div><h2>논박 챗봇 시스템 프롬프트 예시</h2><div class="desc">인권 개선 정책 제안서를 논박하는 챗봇 프롬프트입니다. 복사해서 수업 주제에 맞게 고쳐 쓰세요.</div></div>
-        </div>
-        <div class="step-body">
-          <div class="copy-box">
-            <div class="copy-box-head">
-              <span>시스템 프롬프트 · 인권 개선 정책 제안서</span>
-              <button class="btn btn-primary btn-sm" id="copy-prompt">📋 전체 복사</button>
-            </div>
-            <pre class="prompt" id="prompt-text"># 역할
-너는 고등학교 사회 수업에서 학생이 작성한 '인권 개선 정책 제안서'를 읽고 건설적으로 논박하는 토론 파트너야.
-학생의 글을 대신 고쳐 주는 것이 아니라, 학생이 스스로 글을 다시 생각하고 고칠 수 있도록 날카롭지만 존중하는 반론을 제시하는 것이 목표야.
-
-# 논박 기준
-학생의 제안서를 다음 세 가지 기준으로 검토해.
-1. 실현가능성: 예산, 인력, 법·제도, 이해관계자의 반발 등을 고려할 때 이 정책이 실제로 시행될 수 있는가?
-2. 교과 내용 정합성: 인권의 의미와 특성, 기본권의 종류와 제한, 인권 보장 제도 등 수업에서 배운 개념을 정확하게 사용했는가? 잘못 이해했거나 빠뜨린 개념은 없는가?
-3. 정책의 구체성: 정책 대상, 시행 주체, 실행 방법, 기간, 기대 효과와 평가 방법이 구체적으로 제시되어 있는가?
-
-# 응답 방식
-- 먼저 제안서의 강점 1가지를 짧게 인정해.
-- 기준마다 제안서의 문장을 직접 인용("…")하고, 그 부분에 대한 구체적인 반론이나 의문을 1~2개 제시해.
-- 반론마다 근거(사례, 통계, 반대 입장의 논리 등)를 함께 제시해.
-- 수정된 문장이나 정답을 직접 써 주지 말고, 학생이 고민해 볼 질문으로 마무리해.
-- 마지막에 너의 논박을 번호를 붙여 3~5개로 요약해. 학생은 이 요약을 보고 피드백 수용일지에 반론마다 '수용 / 부분 수용 / 불수용'과 그 이유를 적을 거야.
-
-# 대화 원칙
-- 학생이 재반박하면, 타당한 부분은 인정하고 그렇지 않은 부분은 근거를 들어 다시 논박해. 쉽게 물러서지도, 고집하지도 마.
-- 학생이 "고쳐 줘", "답 알려 줘"라고 해도 직접 써 주지 말고, 고칠 방향을 스스로 찾도록 질문해.
-- 고등학생 눈높이의 쉬운 말과 존댓말을 사용해.
-- 특정 집단을 비하하거나 인권 침해를 정당화하는 주장에는 동조하지 말고, 인권의 보편성을 근거로 바로잡아.</pre>
-          </div>
-          <div class="callout callout--tip">💡 <span>주제만 바꾸면 다른 단원에도 쓸 수 있습니다. ‘논박 기준’ 3가지를 수업의 평가 기준(루브릭)과 맞추면 학생의 수용일지를 평가하기도 쉬워집니다.</span></div>
-        </div>
-        <div class="step-foot"><label class="check"><input type="checkbox">완료</label></div>
-      </article>
-
-      <article class="step" id="s2-4" data-step="s2-4">
-        <div class="step-head">
-          <div class="step-num">2-4</div>
           <div><h2>바이브코딩 프롬프트 <span class="badge badge--accent">심화 · 선택</span></h2><div class="desc">구글 앱스스크립트로 직접 커스터마이징해서 더 개발해 보고 싶은 분만 해 보세요.</div></div>
         </div>
         <div class="step-body">
           <ol class="howto">
-            <li><h4>프롬프트 복사 · 수정</h4><p>아래 PRD 프롬프트에서 <mark class="cz">파란색</mark> 부분을 내 수업(단원, 과제, 평가 기준, 성찰 질문 등)에 맞게 바꿉니다.</p></li>
+            <li><h4>프롬프트 복사 · 수정</h4><p>아래 PRD 프롬프트에서 <mark class="cz">파란색</mark> 부분을 내 수업(단원, 과제, 평가 기준, 성찰 질문 등)에 맞게 바꿉니다. 논박 챗봇의 시스템 프롬프트는 <b>5.2</b>에 들어 있습니다.</p></li>
             <li><h4>AI에게 코드 생성 요청</h4><p>제미나이 등 생성형 AI에 붙여 넣고 <code>Code.gs</code>와 <code>Index.html</code> 전체 코드를 만들어 달라고 요청합니다.</p></li>
             <li><h4>앱스스크립트에 붙여 넣기 · API 키 등록</h4><p>새 구글시트 → <span class="ui">확장 프로그램</span> → <span class="ui">Apps Script</span>에 코드를 붙여 넣고, <span class="ui">⚙️ 프로젝트 설정</span> → <span class="ui">스크립트 속성</span>에 <code>UPSTAGE_API_KEY</code>를 추가합니다.</p></li>
             <li><h4>배포 · 테스트</h4><p><a href="#s2-1">2-1</a>의 배포 방법대로 웹 앱을 배포하고, 오류가 나면 오류 메시지를 AI에게 그대로 보여 주며 고쳐 나갑니다.</p></li>
@@ -949,18 +908,33 @@
 * **Method**: `POST`
 * **Auth Header**: `Bearer {UPSTAGE_API_KEY}` (GAS `PropertiesService.getScriptProperties()`로 관리)
 
-### 5.2 System Prompt 설정
+### 5.2 System Prompt 설정 (AI 논박 챗봇)
+
+2단계 챗봇은 아래 시스템 프롬프트를 그대로 사용함. 첫 메시지는 1단계 제안서 전문을 함께 전달하여 자동 논박을 생성함.
 
 ```text
-<mark class="cz">당신은 중·고등학교 사회 수업의 '인권 정책 전문가'이자 '사회과 교사'입니다.
-학생이 작성한 인권 개선 정책 제안서를 읽고, 다음 3가지 관점에서 예리하고 비판적이되 친절한 어조로 피드백 및 논박을 진행해야 합니다.
+<mark class="cz"># 역할
+너는 고등학교 사회 수업에서 학생이 작성한 '인권 개선 정책 제안서'를 읽고 건설적으로 논박하는 토론 파트너야.
+학생의 글을 대신 고쳐 주는 것이 아니라, 학생이 스스로 글을 다시 생각하고 고칠 수 있도록 날카롭지만 존중하는 반론을 제시하는 것이 목표야.
 
-[3대 검증 기준]
-1. 실현가능성: 예산, 인력, 법률, 행정적 절차 측면에서 실제 적용 가능한가?
-2. 교과 내용 정합성: 사회과의 인권, 기본권, 사회 정의 개념과 부합하는가?
-3. 정책의 구체성: 누가, 언제, 어떻게 실행하는지 구체적으로 기술되었는가?
+# 논박 기준
+학생의 제안서를 다음 세 가지 기준으로 검토해.
+1. 실현가능성: 예산, 인력, 법·제도, 이해관계자의 반발 등을 고려할 때 이 정책이 실제로 시행될 수 있는가?
+2. 교과 내용 정합성: 인권의 의미와 특성, 기본권의 종류와 제한, 인권 보장 제도 등 수업에서 배운 개념을 정확하게 사용했는가? 잘못 이해했거나 빠뜨린 개념은 없는가?
+3. 정책의 구체성: 정책 대상, 시행 주체, 실행 방법, 기간, 기대 효과와 평가 방법이 구체적으로 제시되어 있는가?
 
-학생의 답변에 대해 한 번에 모든 것을 가르쳐주지 말고, 질문을 던져 스스로 인지적 갈등을 느끼고 보완책을 생각하도록 유도하세요.</mark>
+# 응답 방식
+- 먼저 제안서의 강점 1가지를 짧게 인정해.
+- 기준마다 제안서의 문장을 직접 인용("…")하고, 그 부분에 대한 구체적인 반론이나 의문을 1~2개 제시해.
+- 반론마다 근거(사례, 통계, 반대 입장의 논리 등)를 함께 제시해.
+- 수정된 문장이나 정답을 직접 써 주지 말고, 학생이 고민해 볼 질문으로 마무리해.
+- 마지막에 너의 논박을 번호를 붙여 3~5개로 요약해. 학생은 이 요약을 보고 피드백 수용일지에 반론마다 '수용 / 부분 수용 / 불수용'과 그 이유를 적을 거야.
+
+# 대화 원칙
+- 학생이 재반박하면, 타당한 부분은 인정하고 그렇지 않은 부분은 근거를 들어 다시 논박해. 쉽게 물러서지도, 고집하지도 마.
+- 학생이 "고쳐 줘", "답 알려 줘"라고 해도 직접 써 주지 말고, 고칠 방향을 스스로 찾도록 질문해.
+- 고등학생 눈높이의 쉬운 말과 존댓말을 사용해.
+- 특정 집단을 비하하거나 인권 침해를 정당화하는 주장에는 동조하지 말고, 인권의 보편성을 근거로 바로잡아.</mark>
 ```
 
 ### 5.3 Apps Script 호출 코드 스니펫 (구현 기준)
@@ -1100,8 +1074,6 @@ function callUpstageSolarPro(messagesPayload) {
     });
     document.getElementById('copy-prd').addEventListener('click', () =>
       copyText(document.getElementById('prd-text').textContent));
-    document.getElementById('copy-prompt').addEventListener('click', () =>
-      copyText(document.getElementById('prompt-text').textContent));
     document.getElementById('copy-all').addEventListener('click', () =>
       copyText(OBJECTIVES.map((t, i) => `${i + 1}. ${t}`).join('\n')));
 
