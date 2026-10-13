@@ -201,6 +201,10 @@
     .fold > .howto { padding: 20px 16px 0; }
     .fold > .callout { margin: 0 16px 16px; }
 
+    mark.cz { background: #DBEAFE; color: #1D4ED8; font-weight: 600; padding: 0 2px; border-radius: 3px; }
+    .badge--accent { background: #DBEAFE; color: #1D4ED8; border-color: transparent; vertical-align: middle; margin-left: 4px; }
+    .prompt--tall { max-height: 520px; }
+
     /* Prompt block */
     .prompt { margin: 0; padding: 16px; max-height: 360px; overflow: auto; white-space: pre-wrap; word-break: keep-all; font-family: inherit; font-size: .875rem; line-height: 1.7; background: var(--surface); color: var(--text); }
 
@@ -385,6 +389,7 @@
           <li><a href="#s2-1" data-step="s2-1">시트 사본 · 웹앱 배포</a></li>
           <li><a href="#s2-2" data-step="s2-2">업스테이지 API 키 발급</a></li>
           <li><a href="#s2-3" data-step="s2-3">논박 챗봇 프롬프트</a></li>
+          <li><a href="#s2-4" data-step="s2-4">바이브코딩 프롬프트 (심화)</a></li>
         </ul>
       </li>
     </ul>
@@ -427,6 +432,7 @@
             <li>구글시트 사본 · 웹앱 배포</li>
             <li>업스테이지 API 키 발급</li>
             <li>논박 챗봇 시스템 프롬프트 예시</li>
+            <li>(심화) 바이브코딩 PRD 프롬프트</li>
           </ul>
           <span class="go">실습 시작하기 →</span>
         </a>
@@ -592,7 +598,7 @@
         <div class="eyebrow">PART 2</div>
         <h1>AI 피드백 수용일지 템플릿 만들기</h1>
         <p>AI가 학생의 제안서를 논박하면, 학생은 그 피드백을 받아들일지 스스로 판단해 일지에 적고 글을 고칩니다. 구글시트와 앱스스크립트, 업스테이지 AI로 이 흐름을 만들어 봅니다.</p>
-        <div class="badges"><span class="badge badge--primary">실습 3단계</span><span class="badge">Google Sheets</span><span class="badge">Apps Script</span><span class="badge">Upstage AI</span></div>
+        <div class="badges"><span class="badge badge--primary">실습 3단계 + 심화 1</span><span class="badge">Google Sheets</span><span class="badge">Apps Script</span><span class="badge">Upstage AI</span></div>
       </div>
 
       <div class="flow-card">
@@ -746,6 +752,263 @@
         <div class="step-foot"><label class="check"><input type="checkbox">완료</label></div>
       </article>
 
+      <article class="step" id="s2-4" data-step="s2-4">
+        <div class="step-head">
+          <div class="step-num">2-4</div>
+          <div><h2>바이브코딩 프롬프트 <span class="badge badge--accent">심화 · 선택</span></h2><div class="desc">구글 앱스스크립트로 직접 커스터마이징해서 더 개발해 보고 싶은 분만 해 보세요.</div></div>
+        </div>
+        <div class="step-body">
+          <ol class="howto">
+            <li><h4>프롬프트 복사 · 수정</h4><p>아래 PRD 프롬프트에서 <mark class="cz">파란색</mark> 부분을 내 수업(단원, 과제, 평가 기준, 성찰 질문 등)에 맞게 바꿉니다.</p></li>
+            <li><h4>AI에게 코드 생성 요청</h4><p>제미나이 등 생성형 AI에 붙여 넣고 <code>Code.gs</code>와 <code>Index.html</code> 전체 코드를 만들어 달라고 요청합니다.</p></li>
+            <li><h4>앱스스크립트에 붙여 넣기 · API 키 등록</h4><p>새 구글시트 → <span class="ui">확장 프로그램</span> → <span class="ui">Apps Script</span>에 코드를 붙여 넣고, <span class="ui">⚙️ 프로젝트 설정</span> → <span class="ui">스크립트 속성</span>에 <code>UPSTAGE_API_KEY</code>를 추가합니다.</p></li>
+            <li><h4>배포 · 테스트</h4><p><a href="#s2-1">2-1</a>의 배포 방법대로 웹 앱을 배포하고, 오류가 나면 오류 메시지를 AI에게 그대로 보여 주며 고쳐 나갑니다.</p></li>
+          </ol>
+          <div class="copy-box">
+            <div class="copy-box-head">
+              <span>PRD 프롬프트 · <mark class="cz">파란색</mark> = 교사가 바꿀 부분</span>
+              <button class="btn btn-primary btn-sm" id="copy-prd">📋 전체 복사</button>
+            </div>
+            <pre class="prompt prompt--tall" id="prd-text"># [PRD 프롬프트] Google Apps Script 기반 AI <mark class="cz">인권 개선 정책 제안</mark> &amp; 피드백 성찰 웹앱
+
+---
+
+## 1. 프로젝트 개요 및 목표
+
+### 1.1 프로젝트명
+
+* **<mark class="cz">사회과 인권 개선 정책 제안 및 AI 피드백 성찰 웹앱</mark>** (Google Apps Script 기반)
+
+### 1.2 개발 배경 및 목적
+
+* <mark class="cz">중·고등학교 사회 수업</mark>에서 학생들이 직접 <mark class="cz">지역사회 또는 학교의 인권 문제 개선 정책 제안서</mark>를 작성하고, AI 챗봇과의 논박을 통해 <mark class="cz">실현 가능성, 교과 내용 정합성, 정책 구체성</mark>을 다각도로 검증함.
+* AI 피드백 수용 여부를 다루는 성찰 일지를 작성한 후 최종 제안서를 수정 제출함으로써 <mark class="cz">비판적 사고력과 문제 해결 역량</mark>을 함양함.
+
+### 1.3 핵심 환경 및 제한사항
+
+* **플랫폼**: Google Apps Script (GAS) Web App + Google Sheets (데이터베이스 역할)
+* **외부 API**: Upstage Solar Pro API (`https://api.upstage.ai/v1/chat/completions`)
+* **사용자 기기**: <mark class="cz">태블릿 중심 (크롬북/아이패드/갤탭 등)</mark> 반응형 웹 UI
+* **인증 방식**: 별도 회원가입 없이 <mark class="cz">[학번 / 이름 / 비밀번호]</mark> 기반 입력 로그인 (클라이언트 SHA-256 해싱 후 서버 동기화)
+* **자율 이동 제약**: 1단계부터 4단계까지 자유롭게 이전/다음 단계로 이동 가능하며, 단계별 임시저장 기능 제공
+
+---
+
+## 2. 사용자 역할 및 로그인 체계
+
+### 2.1 인증 및 학생 정보 관리
+
+1. **최초 접속/로그인**:
+* 학생이 `[학번, 이름, 비밀번호]`를 입력함.
+* 클라이언트 단에서 비밀번호를 SHA-256으로 해싱하여 서버로 전달.
+* `Users` 시트에 해당 학번이 없으면 자동 회원가입(학번, 이름, 비번 해시 저장) 처리 후 로그인.
+* 이미 존재하는 학번인 경우 비밀번호 해시 일치 여부를 검증함.
+
+2. **세션 유지**:
+* 로그인 성공 시 브라우저 `localStorage`에 학번 및 이름을 저장하여 새로고침 시에도 단계별 입력 상태 유지 및 백엔드 자동 불러오기 지원.
+
+---
+
+## 3. 데이터베이스(Google Sheets) 구조 및 자동 설정 요구사항
+
+### 3.1 탭 및 헤더 자동 생성 (`initSpreadsheetSheets` 함수)
+
+앱 실행 시 또는 관리자 초기화 시 구글 시트에 다음 2개 탭이 존재하는지 확인하고, 없을 경우 자동 생성 및 헤더 열을 작성해야 함.
+
+#### [탭 1] `Users` (사용자 데이터)
+
+| 열 번호 | 헤더 명칭 | 설명 |
+| --- | --- | --- |
+| A | `학번` | 학생 학번 (Unique Key) |
+| B | `이름` | 학생 이름 |
+| C | `비밀번호_해시` | SHA-256 해싱된 비밀번호 |
+| D | `생성일시` | 가입/최초 로그인 일시 |
+| E | `최종접속일시` | 최근 로그인 일시 |
+
+#### [탭 2] `Proposals` (제안서 및 대화/성찰 데이터)
+
+| 열 번호 | 헤더 명칭 | 설명 |
+| --- | --- | --- |
+| A | `학번` | 학생 학번 |
+| B | `이름` | 학생 이름 |
+| C | `1단계_제안서_초안` | JSON 형식 (<mark class="cz">정책명, 대상, 문제점, 실행방안, 기대효과</mark>) |
+| D | `2단계_AI대화내역` | JSON 배열 형식 (User/Assistant 메시지 기록) |
+| E | `3단계_성찰일지` | <mark class="cz">수용/비수용 판단 및 피드백 성찰 일지</mark> 텍스트 |
+| F | `4단계_최종_제안서` | JSON 형식 (수정된 최종 정책 제안서) |
+| G | `현재단계` | 현재 진행 중인 단계 (1, 2, 3, 4) |
+| H | `임시저장일시` | 최근 저장 일시 |
+| I | `최종제출여부` | TRUE / FALSE |
+| J | `최종제출일시` | 최종 제출 완료 일시 |
+
+---
+
+## 4. 단계별 기능 및 사용자 경험(UX) 흐름
+
+### 4.1 전체 UX 단계 구조
+
+* **[로그인]** ➔ **[1단계: <mark class="cz">제안서 초안 작성</mark>]** ⇄ **[2단계: <mark class="cz">AI 논박 &amp; 피드백 챗봇</mark>]** ⇄ **[3단계: <mark class="cz">성찰 일지 작성</mark>]** ⇄ **[4단계: <mark class="cz">최종 수정 및 제출</mark>]**
+* 상단에 단계 프로그레스 바(Step Indicator)를 두어 자유롭게 클릭하거나 '이전/다음' 버튼을 통해 단계 이동 가능.
+
+---
+
+### 4.2 단계별 구체 사양
+
+#### [로그인 화면]
+
+* 입력 항목: 학번 (예: <mark class="cz">20101</mark>), 이름 (예: 홍길동), 비밀번호
+* [시작하기] 버튼 클릭 시 로그인/가입 처리 후 1단계로 이동.
+
+#### [1단계: <mark class="cz">인권 개선 정책 제안서</mark> 초안 작성]
+
+* **입력 양식**:
+<mark class="cz">1. 정책/사업 제목
+2. 적용 대상 (예: 학생, 지역 주민, 노약자 등)
+3. 해결하고자 하는 인권 문제 및 필요성
+4. 구체적 정책 실행 방안
+5. 기대 효과</mark>
+
+* **주요 기능**:
+* `[임시 저장]` 버튼: 입력 내용을 구글 시트에 실시간 반영.
+* `[다음 단계로 (AI 피드백 받기)]` 버튼: 내용 저장 후 2단계로 이동.
+
+#### [2단계: AI 논박 &amp; 챗봇 피드백]
+
+* **화면 구성**:
+* **좌측(또는 상단 접이식)**: 1단계에서 작성한 제안서 초안 요약 보기.
+* **우측(또는 메인)**: AI 챗봇 대화창.
+
+* **AI 챗봇 동작 로직**:
+* 2단계 최초 진입 시, 1단계 제안서를 바탕으로 AI가 자동 첫 논박 메시지 생성.
+* **평가 및 논박 기준 3가지**:
+<mark class="cz">1. **실현 가능성**: 예산, 법적/행정적 제약, 실행 기관의 현실성 등
+2. **교과 내용 정합성**: 사회과 인권 관련 개념(기본권, 인권 침해, 차별 금지 등)과의 부합 여부
+3. **정책의 구체성**: 누구나 실행할 수 있을 만큼 구체적인 절차와 방법 제시 여부</mark>
+
+* 학생이 질문/반론을 입력하면 AI가 실시간 답변(Upstage API).
+* 대화 내역은 JSON 형태로 자동 기록되며 구글 시트에 저장.
+
+* **주요 기능**:
+* `[이전 단계로 (초안 수정)]` 버튼: 1단계로 이동.
+* `[다음 단계로 (성찰 일지 작성)]` 버튼: 3단계로 이동.
+
+#### [3단계: AI 피드백 수용 성찰 일지 작성]
+
+* **화면 구성**:
+* **좌측**: 2단계에서 진행한 AI와의 전체 대화 내역 열람창.
+* **우측**: 성찰 일지 작성 폼.
+
+* **성찰 일지 질문 항목**:
+<mark class="cz">1. AI의 지적/피드백 중 **수용한 내용**과 그 이유
+2. AI의 지적/피드백 중 **수용하지 않거나 반박한 내용**과 그 이유
+3. 최종 제안서 작성을 위해 **수정 및 보완할 핵심 방향**</mark>
+
+* **주요 기능**:
+* `[임시 저장]` 버튼
+* `[이전 단계로]` / `[다음 단계로 (최종 제출)]` 버튼.
+
+#### [4단계: 최종 제안서 수정 및 제출]
+
+* **화면 구성**:
+* 1단계 초안 및 3단계 성찰 일지 내용이 자동으로 불러와짐.
+* 최종 제안서 편집 양식 (<mark class="cz">제목, 대상, 문제점, 구체적 실행방안, 기대효과</mark>).
+
+* **주요 기능**:
+* `[임시 저장]` 버튼
+* `[이전 단계로]` 버튼
+* `[최종 제출하기]` 버튼: 제출 완료 안내 표시 및 `최종제출여부`를 TRUE로 업데이트. (<mark class="cz">제출 후에도 재수정 및 제출 가능</mark>)
+
+---
+
+## 5. 외부 API 연동 사양 (Upstage Solar Pro API)
+
+### 5.1 API 호출 개요
+
+* **Endpoint**: `https://api.upstage.ai/v1/chat/completions`
+* **Method**: `POST`
+* **Auth Header**: `Bearer {UPSTAGE_API_KEY}` (GAS `PropertiesService.getScriptProperties()`로 관리)
+
+### 5.2 System Prompt 설정
+
+```text
+<mark class="cz">당신은 중·고등학교 사회 수업의 '인권 정책 전문가'이자 '사회과 교사'입니다.
+학생이 작성한 인권 개선 정책 제안서를 읽고, 다음 3가지 관점에서 예리하고 비판적이되 친절한 어조로 피드백 및 논박을 진행해야 합니다.
+
+[3대 검증 기준]
+1. 실현가능성: 예산, 인력, 법률, 행정적 절차 측면에서 실제 적용 가능한가?
+2. 교과 내용 정합성: 사회과의 인권, 기본권, 사회 정의 개념과 부합하는가?
+3. 정책의 구체성: 누가, 언제, 어떻게 실행하는지 구체적으로 기술되었는가?
+
+학생의 답변에 대해 한 번에 모든 것을 가르쳐주지 말고, 질문을 던져 스스로 인지적 갈등을 느끼고 보완책을 생각하도록 유도하세요.</mark>
+```
+
+### 5.3 Apps Script 호출 코드 스니펫 (구현 기준)
+
+```javascript
+function callUpstageSolarPro(messagesPayload) {
+  const apiKey = PropertiesService.getScriptProperties().getProperty("UPSTAGE_API_KEY");
+  const url = "https://api.upstage.ai/v1/chat/completions";
+
+  const payload = {
+    model: "solar-pro3",
+    messages: messagesPayload,
+    reasoning_effort: "medium"
+  };
+
+  const options = {
+    method: "post",
+    contentType: "application/json",
+    headers: {
+      Authorization: "Bearer " + apiKey
+    },
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  };
+
+  const response = UrlFetchApp.fetch(url, options);
+  const json = JSON.parse(response.getContentText());
+  return json.choices[0].message;
+}
+```
+
+---
+
+## 6. 백엔드(GAS) 주요 함수 명세
+
+1. **`doGet(e)`**:
+* `Index.html` 페이지 출력 (`HtmlService.createHtmlOutputFromFile`).
+* 모바일/태블릿 최적화 `meta viewport` 설정 포함.
+
+2. **`initSpreadsheetSheets()`**:
+* 스프레드시트에 `Users`, `Proposals` 탭 유무 확인 및 헤더 자동 생성.
+
+3. **`loginOrRegisterUser(studentId, name, passwordHash)`**:
+* 학생 검증 및 로그인 처리, 로그인 시각 업데이트.
+
+4. **`loadStudentData(studentId)`**:
+* 해당 학생의 1~4단계 데이터 및 진행 단계 반환.
+
+5. **`saveStepData(studentId, name, step, formData)`**:
+* 각 단계별 입력 데이터 구글 시트 반영 (`Proposals` 시트 업서트 처리).
+
+6. **`chatWithAI(studentId, userMessage, chatHistory)`**:
+* 이전 대화 내역 + 사용자 입력 메시지를 구성하여 `callUpstageSolarPro` 호출 후 결과 반환 및 구글 시트에 대화 내역 저장.
+
+---
+
+## 7. 프론트엔드 UI/UX 가이드라인
+
+* **디자인 컨셉**: <mark class="cz">태블릿 화면에 최적화된 깔끔하고 현대적인 대시보드 형태</mark>.
+* **컴포넌트 구조**:
+* Top Navigation Bar: <mark class="cz">시스템 제목</mark> + 로그인된 학생 정보 [학번 이름] + 임시저장 상태 표시기.
+* Step Bar: <mark class="cz">[1. 초안 작성] ➔ [2. AI 피드백/논박] ➔ [3. 성찰 일지] ➔ [4. 최종 제출]</mark> (클릭으로 자유로운 이동 가능).
+* Main Content Area: 선택된 단계의 폼 및 챗봇 인터페이스 표시.
+* Toast Notification: 임시저장 완료, API 통신 중, 오류 발생 시 알림 표시.</pre>
+          </div>
+          <div class="callout callout--tip">💡 <span><b>파란색 부분만 바꿔도 다른 단원에 쓸 수 있습니다.</b> 예: ‘인권 개선 정책 제안서’ → ‘환경 문제 해결 캠페인 기획안’. 이때 1단계 입력 양식, 4단계 편집 양식, 시트 C열 항목을 서로 맞춰 바꾸세요.</span></div>
+        </div>
+        <div class="step-foot"><label class="check"><input type="checkbox">완료</label></div>
+      </article>
+
       <div class="pager">
         <a class="btn btn-outline" href="#s1">← 1. 논쟁적 글쓰기</a>
         <a class="btn btn-outline" href="#home">연수 안내로 🏠</a>
@@ -813,6 +1076,8 @@
       li.querySelector('button').addEventListener('click', () => copyText(`${i + 1}. ${t}`));
       objList.appendChild(li);
     });
+    document.getElementById('copy-prd').addEventListener('click', () =>
+      copyText(document.getElementById('prd-text').textContent));
     document.getElementById('copy-prompt').addEventListener('click', () =>
       copyText(document.getElementById('prompt-text').textContent));
     document.getElementById('copy-all').addEventListener('click', () =>
