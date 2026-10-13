@@ -202,6 +202,33 @@
     .lb-prev { left: 8px; } .lb-next { right: 8px; }
     .lightbox:fullscreen .lb-stage { padding-bottom: 12px; }
 
+
+    .flow-why { margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--border); font-size: .75rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 2px; }
+    .flow-why b { font-size: .8125rem; color: var(--primary-hover); }
+    .flow-step--ai .flow-why b { color: #4338CA; }
+    .why { border-top: 1px solid var(--border); padding-top: 20px; display: flex; flex-direction: column; gap: 16px; }
+    .why-title { font-size: 1.125rem; }
+    .why-lead { font-size: .9375rem; }
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .why-card { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; background: var(--bg); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .why-card-head { display: flex; align-items: center; gap: 12px; }
+    .why-icon { font-size: 1.5rem; width: 44px; height: 44px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); display: grid; place-items: center; flex-shrink: 0; }
+    .why-card h4 { font-size: 1.0625rem; color: var(--text-strong); }
+    .why-card small { font-size: .75rem; color: var(--text-muted); }
+    .why-card > p { font-size: .9rem; }
+    .why-list { list-style: none; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: .875rem; }
+    .why-list li { display: flex; gap: 8px; }
+    .why-list li > b:first-child { flex-shrink: 0; color: var(--primary); min-width: 34px; }
+    .why-table { width: 100%; border-collapse: collapse; font-size: .8438rem; background: var(--surface); border-radius: 6px; overflow: hidden; }
+    .why-table th { text-align: left; background: var(--primary-light); color: var(--primary-hover); font-weight: 700; padding: 8px 10px; }
+    .why-table td { padding: 8px 10px; border-top: 1px solid var(--border); vertical-align: top; }
+    .why-table td:first-child { white-space: nowrap; }
+    .why-note { display: flex; gap: 8px; font-size: .8438rem; padding: 10px 12px; border-radius: 6px; background: var(--warning-light); color: #92400E; border: 1px solid #FDE68A; margin-top: auto; }
+    .why-teacher { border-radius: var(--radius-sm); padding: 16px 18px; background: var(--primary-light); color: var(--primary-hover); }
+    .why-teacher h4 { font-size: 1rem; color: var(--primary-hover); margin-bottom: 8px; }
+    .why-teacher ol { margin: 0 0 0 20px; display: flex; flex-direction: column; gap: 6px; font-size: .9rem; color: var(--text); }
+    .why-teacher b { color: var(--text-strong); }
+
     /* Foldable how-to */
     .fold { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
     .fold > summary { list-style: none; cursor: pointer; padding: 12px 16px; font-weight: 600; font-size: .9375rem; color: var(--primary-hover); display: flex; align-items: center; gap: 10px; user-select: none; }
@@ -339,6 +366,7 @@
       .progress-bar { width: 72px; }
     }
     @media (max-width: 1100px) {
+      .why-grid { grid-template-columns: 1fr; }
       .flow { grid-template-columns: 1fr; gap: 22px; }
       .flow-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -21px; transform: translateX(-50%); }
     }
@@ -671,6 +699,7 @@
             <div class="flow-icon">📝</div>
             <h4>제안서 작성</h4>
             <p>인권 개선 정책 제안서 초안을 씁니다.</p>
+            <div class="flow-why"><b>먼저 스스로 생각하기</b>AI보다 내 생각을 먼저 꺼내 봅니다.</div>
           </li>
           <li class="flow-step flow-step--ai">
             <span class="flow-who">AI 챗봇</span>
@@ -678,6 +707,7 @@
             <h4>AI 논박</h4>
             <p>제안서를 읽고 구체적으로 반론합니다.</p>
             <div class="flow-tags"><span>실현가능성</span><span>교과 내용 정합성</span><span>정책의 구체성</span></div>
+            <div class="flow-why"><b>생산적인 막힘</b>답 대신 반론과 질문을 받아 다시 생각하게 됩니다.</div>
           </li>
           <li class="flow-step">
             <span class="flow-who">학생</span>
@@ -685,15 +715,59 @@
             <h4>피드백 수용일지</h4>
             <p>대화 내역을 보며 반론마다 받아들일지 판단하고 근거를 적습니다.</p>
             <div class="flow-tags"><span>수용</span><span>부분 수용</span><span>불수용</span></div>
+            <div class="flow-why"><b>피드백을 판단하기</b>AI의 말도 따져 보고 고를 대상입니다.</div>
           </li>
           <li class="flow-step">
             <span class="flow-who">학생</span>
             <div class="flow-icon">✅</div>
             <h4>수정 · 최종 제출</h4>
             <p>일지의 판단에 따라 제안서를 고쳐 제출합니다.</p>
+            <div class="flow-why"><b>피드백을 행동으로</b>판단한 내용을 실제 글에 반영합니다.</div>
           </li>
         </ol>
         <div class="callout callout--tip">💡 <span>AI는 <b>고쳐 주지 않고 논박만</b> 합니다. 어떤 피드백을 받아들일지는 <b>학생이 판단</b>하며, 이 판단 과정이 평가 대상이 됩니다.</span></div>
+
+        <div class="why">
+          <h3 class="why-title">🤔 왜 이렇게 설계했을까요?</h3>
+          <p class="why-lead">AI가 바로 고쳐 주면 글은 금방 좋아지지만, 학생에게 남는 것은 많지 않습니다. 이 흐름은 일부러 <b>한 번 더 생각하게 만드는 장치</b>를 넣고, 학생이 <b>피드백을 스스로 다루는 힘</b>을 기르도록 짜여 있습니다.</p>
+
+          <div class="why-grid">
+            <section class="why-card">
+              <div class="why-card-head"><span class="why-icon">🧗</span><div><h4>바람직한 어려움</h4><small>Desirable Difficulties · Bjork (1994)</small></div></div>
+              <p><b>쉽게 배운 것은 쉽게 잊힙니다.</b> 배우는 순간에는 조금 힘들어도, 스스로 떠올리고 따져 보는 과정을 거친 내용이 더 오래 남고 다른 상황에도 잘 옮겨 쓰입니다. 운동할 때 적당한 무게가 근육을 키우는 것과 비슷합니다.</p>
+              <ul class="why-list">
+                <li><b>①</b> AI에게 묻기 전에 <b>초안부터 직접</b> 씁니다. 스스로 만들어 본 생각이 다음 단계의 출발점이 됩니다.</li>
+                <li><b>②</b> AI는 고친 문장 대신 <b>반론과 질문</b>을 줍니다. 생각을 AI에게 통째로 맡기는 ‘인지 외주화’를 막고, 학생이 생각을 이어 가게 합니다.</li>
+                <li><b>③ ④</b> 반론을 다시 읽고 판단한 뒤 <b>내 손으로</b> 고칩니다. 같은 내용을 여러 번 다시 꺼내 쓰며 이해가 깊어집니다.</li>
+              </ul>
+              <div class="why-note">⚖️ <span><b>‘바람직한’ 정도가 중요합니다.</b> 너무 어려우면 그냥 포기합니다. 그래서 논박 기준을 3가지로 좁혀 주고, AI가 질문 형태로 방향을 살짝 알려 주는 <b>발판(스캐폴딩)</b>을 함께 둡니다.</span></div>
+            </section>
+
+            <section class="why-card">
+              <div class="why-card-head"><span class="why-icon">🔍</span><div><h4>피드백 리터러시</h4><small>Feedback Literacy · Carless &amp; Boud (2018)</small></div></div>
+              <p><b>피드백은 ‘받는 것’이 아니라 ‘쓰는 것’입니다.</b> 피드백을 이해하고, 맞는지 따져 보고, 내 글에 반영하는 능력을 피드백 리터러시라고 합니다. 이 능력은 저절로 생기지 않아서 수업에서 연습할 기회가 필요합니다.</p>
+              <table class="why-table">
+                <thead><tr><th>피드백 리터러시 요소</th><th>이 수업에서는</th></tr></thead>
+                <tbody>
+                  <tr><td><b>피드백의 가치 알기</b></td><td>② 반론을 ‘지적’이 아니라 글을 좋게 만드는 재료로 받아들입니다.</td></tr>
+                  <tr><td><b>감정 다루기</b></td><td>② 반박을 받아도 상대가 AI라 덜 위축되고, 재반박하며 차분히 대화합니다.</td></tr>
+                  <tr><td><b>판단하기</b></td><td>③ 반론마다 수용·부분 수용·불수용을 고르고 <b>근거</b>를 씁니다.</td></tr>
+                  <tr><td><b>행동으로 옮기기</b></td><td>④ 판단한 내용을 실제로 제안서에 반영해 고칩니다.</td></tr>
+                </tbody>
+              </table>
+              <div class="why-note">🚩 <span><b>‘불수용’도 좋은 답입니다.</b> AI도 틀립니다. 미리보기 화면에서도 AI가 출처를 확인하기 어려운 통계를 근거로 듭니다. “이 근거가 사실인가?”를 따져 보고 근거를 들어 거절하는 것 역시 중요한 피드백 리터러시입니다.</span></div>
+            </section>
+          </div>
+
+          <div class="why-teacher">
+            <h4>🧑‍🏫 교사가 챙길 3가지</h4>
+            <ol>
+              <li><b>결과물보다 판단 과정을 봅니다.</b> 최종 글의 완성도와 함께, 수용일지에 쓴 판단의 <b>근거</b>가 타당한지 평가합니다.</li>
+              <li><b>불수용을 칭찬합니다.</b> AI 말을 다 받아들인 학생보다, 근거를 들어 걸러 낸 학생이 더 깊이 생각한 것일 수 있습니다.</li>
+              <li><b>어려움의 수준을 조절합니다.</b> 막혀서 멈춘 학생에게는 논박 기준 하나만 골라 대화하게 하는 등 부담을 줄여 줍니다.</li>
+            </ol>
+          </div>
+        </div>
       </div>
 
       <article class="step" id="s2-1" data-step="s2-1">
