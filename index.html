@@ -131,6 +131,18 @@
     .course-card li::before { content: "→ "; color: var(--primary); font-weight: 700; }
     .course-card .go { font-weight: 600; color: var(--primary); font-size: .9rem; margin-top: 4px; }
 
+    .hero-url {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px;
+      margin: -8px -8px 24px; padding: 16px 20px; border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
+    }
+    .hero-url-label { font-size: 1.125rem; font-weight: 600; color: rgba(255,255,255,.9); }
+    .hero-url-main { font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em; color: #fff; line-height: 1.2; }
+    .hero-url-copy {
+      margin-left: auto; align-self: center; border: 0; border-radius: 99px; padding: 8px 14px;
+      background: #fff; color: var(--primary-hover); font-family: inherit; font-weight: 700; font-size: .8125rem; cursor: pointer;
+    }
+    .hero-url-copy:hover { background: var(--primary-light); }
     .presenter { display: flex; align-items: center; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.22); }
     .presenter-avatar { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.18); font-weight: 700; }
     .presenter-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; font-size: .9375rem; }
@@ -334,6 +346,9 @@
       .topbar { padding: 0 12px; gap: 8px; }
       .topbar-title { font-size: .9375rem; }
       .course-grid, .column-points { grid-template-columns: 1fr; }
+      .hero-url { margin: -4px -4px 20px; padding: 14px 16px; }
+      .hero-url-main { font-size: 1.75rem; }
+      .hero-url-copy { margin-left: 0; }
       .carousel-nav { width: 34px; height: 34px; font-size: 1.375rem; }
       .carousel-prev { left: 6px; } .carousel-next { right: 6px; }
       .carousel-foot { flex-wrap: wrap; }
@@ -399,6 +414,12 @@
     <!-- ============ HOME ============ -->
     <section class="page" id="page-home" data-page="home">
       <div class="hero">
+        <div class="hero-url">
+          <span class="hero-url-label">이 웹페이지의 주소는</span>
+          <span class="hero-url-main">쌤.닷컴/사회교육</span>
+          <span class="hero-url-label">입니다.</span>
+          <button class="hero-url-copy" type="button" data-copy="쌤.닷컴/사회교육">📋 주소 복사</button>
+        </div>
         <div class="eyebrow">SOCIAL STUDIES × AI · 교사 연수</div>
         <h1>AI와 함께하는<br>사회과 논쟁 수업 실습</h1>
         <p>브리스크티칭으로 논쟁적 글쓰기 수업을 설계하고, AI의 논박을 학생이 스스로 판단해 받아들이는 피드백 수용일지 수업을 만들어 봅니다. 각 단계를 마치면 <b>완료</b>를 눌러 진행 상황을 기록하세요.</p>
