@@ -673,8 +673,16 @@
                 <p>사본으로 만든 구글시트 상단 메뉴에서 <span class="ui">확장 프로그램</span> → <span class="ui">Apps Script</span>를 클릭합니다. 새 탭에 스크립트 편집기가 열립니다.</p>
               </li>
               <li>
-                <h4>API 키 붙여 넣고 저장</h4>
-                <p>코드에서 API 키를 넣는 부분을 찾아 2-2에서 발급받은 키를 붙여 넣고, <span class="ui">💾 저장</span>(<code>Ctrl + S</code>)을 누릅니다.</p>
+                <h4>스크립트 속성에 API 키 등록</h4>
+                <p>API 키는 코드에 직접 쓰지 않고 <b>스크립트 속성</b>에 안전하게 저장합니다.</p>
+                <ul>
+                  <li>편집기 왼쪽 메뉴 맨 아래 <span class="ui">⚙️ 프로젝트 설정</span> 클릭</li>
+                  <li>화면 맨 아래 <span class="ui">스크립트 속성</span> → <span class="ui">스크립트 속성 추가</span> 클릭</li>
+                  <li><b>속성:</b> <code>UPSTAGE_API_KEY</code> <button class="icon-btn" type="button" data-copy="UPSTAGE_API_KEY">복사</button> (대소문자·밑줄까지 정확히)</li>
+                  <li><b>값:</b> <a href="#s2-2">2-2</a>에서 발급받은 API 키 붙여 넣기 (앞뒤 공백 없이)</li>
+                  <li><span class="ui">스크립트 속성 저장</span> 클릭 후, 왼쪽 <span class="ui">&lt;&gt; 편집기</span>로 돌아오기</li>
+                </ul>
+                <div class="callout callout--tip">💡 <span>스크립트 속성에 넣은 키는 시트를 공유하거나 학생이 웹앱을 써도 보이지 않습니다. 키를 바꿀 때도 여기서 값만 수정하면 됩니다.</span></div>
               </li>
               <li>
                 <h4>새 배포 만들기</h4>
@@ -1072,6 +1080,8 @@ function callUpstageSolarPro(messagesPayload) {
       li.querySelector('button').addEventListener('click', () => copyText(`${i + 1}. ${t}`));
       objList.appendChild(li);
     });
+    document.querySelectorAll('[data-copy]').forEach(b =>
+      b.addEventListener('click', () => copyText(b.dataset.copy)));
     document.getElementById('copy-prd').addEventListener('click', () =>
       copyText(document.getElementById('prd-text').textContent));
     document.getElementById('copy-all').addEventListener('click', () =>
