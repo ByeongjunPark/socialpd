@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>사회과 AI 수업 연수 | 논쟁적 글쓰기 · 논박 챗봇</title>
-  <meta name="description" content="사회과 교사를 위한 실습형 연수: 브리스크티칭 기반 논쟁적 글쓰기 수업과 학습자 산출물을 논박하는 AI 챗봇 만들기">
+  <title>사회과 AI 수업 연수 | 논쟁적 글쓰기 · 피드백 수용일지</title>
+  <meta name="description" content="사회과 교사를 위한 실습형 연수: 브리스크티칭 기반 논쟁적 글쓰기 수업과 AI 피드백 수용일지 템플릿 만들기">
   <meta property="og:title" content="사회과 AI 수업 연수">
-  <meta property="og:description" content="브리스크티칭 기반 논쟁적 글쓰기 수업 · 학습자 산출물 논박 AI 챗봇 실습">
+  <meta property="og:description" content="브리스크티칭 기반 논쟁적 글쓰기 수업 · AI 피드백 수용일지 템플릿 만들기">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -131,6 +131,67 @@
     .course-card li::before { content: "→ "; color: var(--primary); font-weight: 700; }
     .course-card .go { font-weight: 600; color: var(--primary); font-size: .9rem; margin-top: 4px; }
 
+    .presenter { display: flex; align-items: center; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.22); }
+    .presenter-avatar { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.18); font-weight: 700; }
+    .presenter-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; font-size: .9375rem; }
+    .presenter-name span { font-size: .8125rem; color: rgba(255,255,255,.8); }
+    .presenter-bio { font-size: .8125rem; color: rgba(255,255,255,.72); }
+
+    /* Flow diagram (session 2) */
+    .flow-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .flow-title { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-weight: 700; color: var(--text-strong); font-size: 1.0625rem; }
+    .flow-example { font-size: .75rem; font-weight: 600; color: var(--text-muted); background: var(--code-bg); padding: 3px 10px; border-radius: 99px; }
+    .flow { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+    .flow-step { position: relative; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 14px; display: flex; flex-direction: column; gap: 6px; }
+    .flow-step:not(:last-child)::after { content: "→"; position: absolute; right: -22px; top: 50%; transform: translateY(-50%); color: var(--primary); font-weight: 700; font-size: 1.125rem; }
+    .flow-step--ai { background: var(--accent-light); border-color: #C7D2FE; }
+    .flow-who { align-self: flex-start; font-size: .6875rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--primary-light); color: var(--primary-hover); }
+    .flow-step--ai .flow-who { background: #E0E7FF; color: #4338CA; }
+    .flow-icon { font-size: 1.5rem; }
+    .flow-step h4 { font-size: .9688rem; color: var(--text-strong); }
+    .flow-step p { font-size: .8125rem; color: var(--text-muted); }
+    .flow-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+    .flow-tags span { font-size: .6875rem; font-weight: 600; padding: 2px 7px; border-radius: 5px; background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+
+    /* Slides gallery (session 1) */
+    .slides-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .slides { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .slide { display: flex; flex-direction: column; text-align: left; padding: 0; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); overflow: hidden; cursor: zoom-in; font-family: inherit; color: var(--text); transition: border-color .2s, box-shadow .2s, transform .2s; }
+    .slide:hover { border-color: var(--primary); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .slide img { width: 100%; aspect-ratio: 2.1 / 1; object-fit: cover; object-position: top; background: #fff; display: block; border-bottom: 1px solid var(--border); }
+    .slide span { display: flex; align-items: center; gap: 8px; padding: 10px 12px; font-size: .875rem; font-weight: 600; }
+    .slide span b { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--primary-light); color: var(--primary-hover); display: grid; place-items: center; font-size: .75rem; }
+    .slides-source { font-size: .75rem; color: var(--text-muted); }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; z-index: 300; background: rgba(15,23,42,.94); display: none; flex-direction: column; }
+    .lightbox.open { display: flex; animation: fadeIn .2s ease-out; }
+    .lb-bar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #fff; }
+    .lb-count { font-size: .875rem; font-variant-numeric: tabular-nums; opacity: .8; }
+    .lb-caption { flex: 1; font-size: .9375rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .lb-btn { background: rgba(255,255,255,.12); color: #fff; border: 0; width: 40px; height: 40px; border-radius: 50%; font-size: 1.125rem; cursor: pointer; }
+    .lb-btn:hover { background: rgba(255,255,255,.25); }
+    .lb-stage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 0 64px 24px; position: relative; }
+    .lb-stage img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 10px 40px rgba(0,0,0,.4); }
+    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+    .lb-nav:hover { background: rgba(255,255,255,.28); }
+    .lb-prev { left: 8px; } .lb-next { right: 8px; }
+    .lightbox:fullscreen .lb-stage { padding-bottom: 12px; }
+
+    /* Foldable how-to */
+    .fold { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
+    .fold > summary { list-style: none; cursor: pointer; padding: 12px 16px; font-weight: 600; font-size: .9375rem; color: var(--primary-hover); display: flex; align-items: center; gap: 10px; user-select: none; }
+    .fold > summary::-webkit-details-marker { display: none; }
+    .fold > summary::before { content: "▶"; font-size: .7rem; transition: transform .2s; }
+    .fold[open] > summary::before { transform: rotate(90deg); }
+    .fold > summary:hover { background: var(--primary-light); border-radius: var(--radius-sm); }
+    .fold[open] > summary { border-bottom: 1px solid var(--border); border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+    .fold > .howto { padding: 20px 16px 0; }
+    .fold > .callout { margin: 0 16px 16px; }
+
+    /* Prompt block */
+    .prompt { margin: 0; padding: 16px; max-height: 360px; overflow: auto; white-space: pre-wrap; word-break: keep-all; font-family: inherit; font-size: .875rem; line-height: 1.7; background: var(--surface); color: var(--text); }
+
     /* Column card (home) */
     .column-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
@@ -249,10 +310,19 @@
       .content { margin-left: 0; padding: 24px 16px 64px; }
       .progress-bar { width: 72px; }
     }
+    @media (max-width: 1100px) {
+      .flow { grid-template-columns: 1fr; gap: 22px; }
+      .flow-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -21px; transform: translateX(-50%); }
+    }
     @media (max-width: 640px) {
       .topbar { padding: 0 12px; gap: 8px; }
       .topbar-title { font-size: .9375rem; }
-      .course-grid, .column-points { grid-template-columns: 1fr; }
+      .course-grid, .column-points, .slides { grid-template-columns: 1fr; }
+      .slides-card { padding: 18px 14px; }
+      .lb-stage { padding: 0 8px 16px; }
+      .lb-nav { width: 40px; height: 40px; font-size: 1.5rem; background: rgba(15,23,42,.55); }
+      .fold > .howto { padding: 16px 12px 0; }
+      .fold > .callout { margin: 0 12px 12px; }
       .column-card { padding: 22px 18px; }
       .hero { padding: 28px 22px; }
       .hero h1, .session-header h1 { font-size: 1.5rem; }
@@ -293,11 +363,11 @@
         </ul>
       </li>
       <li class="nav-item" data-page="s2">
-        <a href="#s2"><span class="nav-num">2</span>논박 AI 챗봇</a>
+        <a href="#s2"><span class="nav-num">2</span>AI 피드백 수용일지</a>
         <ul class="nav-sub">
-          <li><a href="#s2-1" data-step="s2-1">구글시트 사본 만들기</a></li>
+          <li><a href="#s2-1" data-step="s2-1">시트 사본 · 웹앱 배포</a></li>
           <li><a href="#s2-2" data-step="s2-2">업스테이지 API 키 발급</a></li>
-          <li><a href="#s2-3" data-step="s2-3">앱스스크립트 웹앱 배포</a></li>
+          <li><a href="#s2-3" data-step="s2-3">논박 챗봇 프롬프트</a></li>
         </ul>
       </li>
     </ul>
@@ -310,7 +380,14 @@
       <div class="hero">
         <div class="eyebrow">SOCIAL STUDIES × AI · 교사 연수</div>
         <h1>AI와 함께하는<br>사회과 논쟁 수업 실습</h1>
-        <p>브리스크티칭으로 논쟁적 글쓰기 수업을 설계하고, 학생 글에 반론을 제기하는 AI 챗봇을 직접 배포해 봅니다. 각 단계를 마치면 <b>완료</b>를 눌러 진행 상황을 기록하세요.</p>
+        <p>브리스크티칭으로 논쟁적 글쓰기 수업을 설계하고, AI의 논박을 학생이 스스로 판단해 받아들이는 피드백 수용일지 수업을 만들어 봅니다. 각 단계를 마치면 <b>완료</b>를 눌러 진행 상황을 기록하세요.</p>
+        <div class="presenter">
+          <span class="presenter-avatar">박</span>
+          <div>
+            <div class="presenter-name"><b>박병준</b><span>경남 일반사회 교사</span></div>
+            <div class="presenter-bio">한국교원대학교 교육공학 석사 · 경상디지털교육자연합 제1대 총괄리더</div>
+          </div>
+        </div>
       </div>
 
       <div class="course-grid">
@@ -327,12 +404,12 @@
         </a>
         <a class="course-card" href="#s2">
           <div class="icon">🤖</div>
-          <h3>2. 학습자 산출물에 대해 논박하는 AI 챗봇</h3>
-          <p>구글시트와 앱스스크립트, 업스테이지 AI로 학생 글에 반론을 제기하는 웹앱을 만들어 배포합니다.</p>
+          <h3>2. AI 피드백 수용일지 템플릿 만들기</h3>
+          <p>AI가 학생 글을 논박하면, 학생이 피드백 수용 여부를 스스로 판단해 일지에 적고 글을 고치는 수업을 만듭니다.</p>
           <ul>
-            <li>구글시트 사본 만들기</li>
+            <li>구글시트 사본 · 웹앱 배포</li>
             <li>업스테이지 API 키 발급</li>
-            <li>앱스스크립트 웹앱 배포</li>
+            <li>논박 챗봇 시스템 프롬프트 예시</li>
           </ul>
           <span class="go">실습 시작하기 →</span>
         </a>
@@ -366,6 +443,17 @@
         <h1>브리스크티칭 기반 논쟁적 글쓰기 수업</h1>
         <p>글감을 만들고, 챗봇이 학생과 대화하며 개념 정의·경험적 사실·가치 갈등을 짚도록 설계합니다.</p>
         <div class="badges"><span class="badge badge--primary">실습 5단계</span><span class="badge">Brisk Teaching</span><span class="badge">Gemini</span><span class="badge">Google Docs</span></div>
+      </div>
+
+      <div class="slides-card">
+        <div class="flow-title">🖼️ 수업 설계 원리 장표 <span class="flow-example">클릭하면 크게 볼 수 있어요</span></div>
+        <div class="slides">
+          <button class="slide" type="button"><img src="images/slide1.jpg" alt="핵심 교육 원리 1: 교수의 제1원리(Merrill, 2002)" loading="lazy"><span><b>1</b>핵심 교육 원리 1: 교수의 제1원리</span></button>
+          <button class="slide" type="button"><img src="images/slide2.jpg" alt="핵심 교육 원리 2: 피드백의 원리" loading="lazy"><span><b>2</b>핵심 교육 원리 2: 피드백의 원리</span></button>
+          <button class="slide" type="button"><img src="images/slide3.jpg" alt="평가와 피드백 루프: 교사와 AI의 상호보완적 관계" loading="lazy"><span><b>3</b>평가와 피드백 루프 (교사 × AI)</span></button>
+          <button class="slide" type="button"><img src="images/slide4.jpg" alt="AI 챗봇 프롬프트 예시: 교육용 프롬프트 해부도" loading="lazy"><span><b>4</b>AI 챗봇 프롬프트 해부도</span></button>
+        </div>
+        <p class="slides-source">출처: 박병준, 이영주 (2026). Merrill의 교수 제1원리에 근거한 AI 챗봇 기반 논쟁적 글쓰기 수업 설계원리 및 챗봇 프롬프트 개발. 교육정보미디어연구, 32(2), 849-881.</p>
       </div>
 
       <article class="step" id="s1-1" data-step="s1-1">
@@ -441,7 +529,7 @@
 
       <div class="pager">
         <a class="btn btn-outline" href="#home">← 연수 안내</a>
-        <a class="btn btn-primary" href="#s2">2. 논박 AI 챗봇 →</a>
+        <a class="btn btn-primary" href="#s2">2. AI 피드백 수용일지 →</a>
       </div>
     </section>
 
@@ -449,21 +537,100 @@
     <section class="page" id="page-s2" data-page="s2">
       <div class="session-header">
         <div class="eyebrow">PART 2</div>
-        <h1>학습자 산출물에 대해 논박하는 AI 챗봇</h1>
-        <p>학생이 제출한 글을 읽고 반론을 제기하는 AI 챗봇을 구글시트와 앱스스크립트로 만들어 웹앱으로 배포합니다.</p>
+        <h1>AI 피드백 수용일지 템플릿 만들기</h1>
+        <p>AI가 학생의 제안서를 논박하면, 학생은 그 피드백을 받아들일지 스스로 판단해 일지에 적고 글을 고칩니다. 구글시트와 앱스스크립트, 업스테이지 AI로 이 흐름을 만들어 봅니다.</p>
         <div class="badges"><span class="badge badge--primary">실습 3단계</span><span class="badge">Google Sheets</span><span class="badge">Apps Script</span><span class="badge">Upstage AI</span></div>
+      </div>
+
+      <div class="flow-card">
+        <div class="flow-title">🗺️ 수업 흐름 한눈에 보기 <span class="flow-example">예시: 인권 개선 정책 제안서</span></div>
+        <ol class="flow">
+          <li class="flow-step">
+            <span class="flow-who">학생</span>
+            <div class="flow-icon">📝</div>
+            <h4>제안서 작성</h4>
+            <p>인권 개선 정책 제안서 초안을 씁니다.</p>
+          </li>
+          <li class="flow-step flow-step--ai">
+            <span class="flow-who">AI 챗봇</span>
+            <div class="flow-icon">🤖</div>
+            <h4>AI 논박</h4>
+            <p>제안서를 읽고 구체적으로 반론합니다.</p>
+            <div class="flow-tags"><span>실현가능성</span><span>교과 내용 정합성</span><span>정책의 구체성</span></div>
+          </li>
+          <li class="flow-step">
+            <span class="flow-who">학생</span>
+            <div class="flow-icon">📓</div>
+            <h4>피드백 수용일지</h4>
+            <p>대화 내역을 보며 반론마다 받아들일지 판단하고 근거를 적습니다.</p>
+            <div class="flow-tags"><span>수용</span><span>부분 수용</span><span>불수용</span></div>
+          </li>
+          <li class="flow-step">
+            <span class="flow-who">학생</span>
+            <div class="flow-icon">✅</div>
+            <h4>수정 · 최종 제출</h4>
+            <p>일지의 판단에 따라 제안서를 고쳐 제출합니다.</p>
+          </li>
+        </ol>
+        <div class="callout callout--tip">💡 <span>AI는 <b>고쳐 주지 않고 논박만</b> 합니다. 어떤 피드백을 받아들일지는 <b>학생이 판단</b>하며, 이 판단 과정이 평가 대상이 됩니다.</span></div>
       </div>
 
       <article class="step" id="s2-1" data-step="s2-1">
         <div class="step-head">
           <div class="step-num">2-1</div>
-          <div><h2>앱스스크립트 기반 구글시트 사본 만들기</h2><div class="desc">챗봇 코드가 들어 있는 구글시트를 내 드라이브로 복사합니다.</div></div>
+          <div><h2>구글시트 사본 만들기 · 웹앱 배포</h2><div class="desc">챗봇 코드가 들어 있는 구글시트를 복사하고, 앱스스크립트 웹앱으로 배포합니다.</div></div>
         </div>
         <div class="step-body">
           <div class="btn-row">
             <a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1ywEQP7Ad3ldtQw4GE0mfNsXujgRhM7pWGu08jkA8pDM/copy" target="_blank" rel="noopener">📊 구글시트 사본 만들기 <span class="ext">↗</span></a>
           </div>
-          <div class="callout">📌 <span>시트를 복사하면 연결된 앱스스크립트 코드도 함께 복사됩니다.</span></div>
+          <div class="callout">📌 <span>시트를 복사하면 연결된 앱스스크립트 코드도 함께 복사됩니다. 배포 전에 <a href="#s2-2">2-2</a>에서 API 키를 먼저 발급받아 두세요.</span></div>
+
+          <details class="fold">
+            <summary>앱스스크립트 웹앱 배포 방법 보기</summary>
+            <ol class="howto">
+              <li>
+                <h4>앱스스크립트 열기</h4>
+                <p>사본으로 만든 구글시트 상단 메뉴에서 <span class="ui">확장 프로그램</span> → <span class="ui">Apps Script</span>를 클릭합니다. 새 탭에 스크립트 편집기가 열립니다.</p>
+              </li>
+              <li>
+                <h4>API 키 붙여 넣고 저장</h4>
+                <p>코드에서 API 키를 넣는 부분을 찾아 2-2에서 발급받은 키를 붙여 넣고, <span class="ui">💾 저장</span>(<code>Ctrl + S</code>)을 누릅니다.</p>
+              </li>
+              <li>
+                <h4>새 배포 만들기</h4>
+                <p>편집기 오른쪽 위 파란색 <span class="ui">배포</span> → <span class="ui">새 배포</span>를 클릭합니다.</p>
+              </li>
+              <li>
+                <h4>유형을 ‘웹 앱’으로 선택</h4>
+                <p><span class="ui">유형 선택</span> 옆 ⚙️ 톱니바퀴 → <span class="ui">웹 앱</span>을 선택하고 아래와 같이 설정합니다.</p>
+                <ul>
+                  <li><b>설명:</b> 자유롭게 (예: 논박 챗봇 v1)</li>
+                  <li><b>다음 사용자 인증 정보로 실행:</b> <span class="ui">나</span></li>
+                  <li><b>액세스 권한이 있는 사용자:</b> <span class="ui">모든 사용자</span> (학교 계정이면 <span class="ui">○○교육청/학교 내 모든 사용자</span>도 가능)</li>
+                </ul>
+              </li>
+              <li>
+                <h4>배포 · 액세스 승인</h4>
+                <p><span class="ui">배포</span>를 누르면 권한 요청이 뜹니다. <span class="ui">액세스 승인</span> → 내 구글 계정을 선택합니다.</p>
+              </li>
+              <li>
+                <h4>(개인 계정) ‘확인되지 않은 앱’ 경고 넘어가기</h4>
+                <p>개인 지메일 계정이면 <b>“Google에서 확인하지 않은 앱”</b> 경고 화면이 나옵니다. 내가 만든 스크립트이므로 다음 순서로 진행하면 됩니다.</p>
+                <ul>
+                  <li>왼쪽 아래 <span class="ui">더보기</span>(또는 <span class="ui">고급</span>) 클릭</li>
+                  <li>맨 아래 <span class="ui">○○(으)로 이동(안전하지 않음)</span> 클릭</li>
+                  <li>권한 목록 확인 후 <span class="ui">허용</span> 클릭</li>
+                </ul>
+                <div class="callout callout--tip">💡 <span>‘안전하지 않음’은 구글 검수를 받지 않은 앱이라는 뜻일 뿐, 본인이 복사한 스크립트라면 괜찮습니다.</span></div>
+              </li>
+              <li>
+                <h4>웹 앱 URL 복사 → 학생에게 공유</h4>
+                <p>배포가 끝나면 나오는 <b>웹 앱 URL</b>(<code>https://script.google.com/macros/s/.../exec</code>)을 복사해 학생에게 안내합니다.</p>
+              </li>
+            </ol>
+            <div class="callout callout--warn">⚠️ <span><b>코드를 수정했다면?</b> <span class="ui">배포</span> → <span class="ui">배포 관리</span> → ✏️ 수정 → 버전을 <span class="ui">새 버전</span>으로 바꾸고 <span class="ui">배포</span>해야 학생 화면에 반영됩니다. (URL은 그대로 유지)</span></div>
+          </details>
         </div>
         <div class="step-foot"><label class="check"><input type="checkbox">완료</label></div>
       </article>
@@ -480,7 +647,7 @@
           <ol class="howto">
             <li><h4>회원가입 · 로그인</h4><p>구글 계정으로 간편하게 가입할 수 있습니다.</p></li>
             <li><h4>API 키 만들기</h4><p>콘솔 메뉴의 <span class="ui">API Keys</span>에서 <span class="ui">Create new key</span>를 눌러 키를 만듭니다.</p></li>
-            <li><h4>키 복사해 두기</h4><p>만든 키를 복사해 메모장 등에 잠시 보관하세요. 다음 단계에서 앱스스크립트에 붙여 넣습니다.</p></li>
+            <li><h4>키 복사해 두기</h4><p>만든 키를 복사해 메모장 등에 잠시 보관하세요. 2-1의 배포 과정에서 앱스스크립트에 붙여 넣습니다.</p></li>
           </ol>
           <div class="callout callout--warn">⚠️ <span><b>API 키는 비밀번호와 같습니다.</b> 학생이나 다른 사람에게 공유하거나 공개된 곳에 올리지 마세요.</span></div>
         </div>
@@ -490,51 +657,38 @@
       <article class="step" id="s2-3" data-step="s2-3">
         <div class="step-head">
           <div class="step-num">2-3</div>
-          <div><h2>앱스스크립트 웹앱 배포하기</h2><div class="desc">복사한 시트에서 앱스스크립트를 열고, 웹앱으로 배포해 학생용 주소를 받습니다.</div></div>
+          <div><h2>논박 챗봇 시스템 프롬프트 예시</h2><div class="desc">인권 개선 정책 제안서를 논박하는 챗봇 프롬프트입니다. 복사해서 수업 주제에 맞게 고쳐 쓰세요.</div></div>
         </div>
         <div class="step-body">
-          <ol class="howto">
-            <li>
-              <h4>앱스스크립트 열기</h4>
-              <p>사본으로 만든 구글시트 상단 메뉴에서 <span class="ui">확장 프로그램</span> → <span class="ui">Apps Script</span>를 클릭합니다. 새 탭에 스크립트 편집기가 열립니다.</p>
-            </li>
-            <li>
-              <h4>API 키 붙여 넣고 저장</h4>
-              <p>코드에서 API 키를 넣는 부분을 찾아 2-2에서 발급받은 키를 붙여 넣고, <span class="ui">💾 저장</span>(<code>Ctrl + S</code>)을 누릅니다.</p>
-            </li>
-            <li>
-              <h4>새 배포 만들기</h4>
-              <p>편집기 오른쪽 위 파란색 <span class="ui">배포</span> → <span class="ui">새 배포</span>를 클릭합니다.</p>
-            </li>
-            <li>
-              <h4>유형을 ‘웹 앱’으로 선택</h4>
-              <p><span class="ui">유형 선택</span> 옆 ⚙️ 톱니바퀴 → <span class="ui">웹 앱</span>을 선택하고 아래와 같이 설정합니다.</p>
-              <ul>
-                <li><b>설명:</b> 자유롭게 (예: 논박 챗봇 v1)</li>
-                <li><b>다음 사용자 인증 정보로 실행:</b> <span class="ui">나</span></li>
-                <li><b>액세스 권한이 있는 사용자:</b> <span class="ui">모든 사용자</span> (학교 계정이면 <span class="ui">○○교육청/학교 내 모든 사용자</span>도 가능)</li>
-              </ul>
-            </li>
-            <li>
-              <h4>배포 · 액세스 승인</h4>
-              <p><span class="ui">배포</span>를 누르면 권한 요청이 뜹니다. <span class="ui">액세스 승인</span> → 내 구글 계정을 선택합니다.</p>
-            </li>
-            <li>
-              <h4>(개인 계정) ‘확인되지 않은 앱’ 경고 넘어가기</h4>
-              <p>개인 지메일 계정이면 <b>“Google에서 확인하지 않은 앱”</b> 경고 화면이 나옵니다. 내가 만든 스크립트이므로 다음 순서로 진행하면 됩니다.</p>
-              <ul>
-                <li>왼쪽 아래 <span class="ui">더보기</span>(또는 <span class="ui">고급</span>) 클릭</li>
-                <li>맨 아래 <span class="ui">○○(으)로 이동(안전하지 않음)</span> 클릭</li>
-                <li>권한 목록 확인 후 <span class="ui">허용</span> 클릭</li>
-              </ul>
-              <div class="callout callout--tip">💡 <span>‘안전하지 않음’은 구글 검수를 받지 않은 앱이라는 뜻일 뿐, 본인이 복사한 스크립트라면 괜찮습니다.</span></div>
-            </li>
-            <li>
-              <h4>웹 앱 URL 복사 → 학생에게 공유</h4>
-              <p>배포가 끝나면 나오는 <b>웹 앱 URL</b>(<code>https://script.google.com/macros/s/.../exec</code>)을 복사해 학생에게 안내합니다.</p>
-            </li>
-          </ol>
-          <div class="callout callout--warn">⚠️ <span><b>코드를 수정했다면?</b> <span class="ui">배포</span> → <span class="ui">배포 관리</span> → ✏️ 수정 → 버전을 <span class="ui">새 버전</span>으로 바꾸고 <span class="ui">배포</span>해야 학생 화면에 반영됩니다. (URL은 그대로 유지)</span></div>
+          <div class="copy-box">
+            <div class="copy-box-head">
+              <span>시스템 프롬프트 · 인권 개선 정책 제안서</span>
+              <button class="btn btn-primary btn-sm" id="copy-prompt">📋 전체 복사</button>
+            </div>
+            <pre class="prompt" id="prompt-text"># 역할
+너는 고등학교 사회 수업에서 학생이 작성한 '인권 개선 정책 제안서'를 읽고 건설적으로 논박하는 토론 파트너야.
+학생의 글을 대신 고쳐 주는 것이 아니라, 학생이 스스로 글을 다시 생각하고 고칠 수 있도록 날카롭지만 존중하는 반론을 제시하는 것이 목표야.
+
+# 논박 기준
+학생의 제안서를 다음 세 가지 기준으로 검토해.
+1. 실현가능성: 예산, 인력, 법·제도, 이해관계자의 반발 등을 고려할 때 이 정책이 실제로 시행될 수 있는가?
+2. 교과 내용 정합성: 인권의 의미와 특성, 기본권의 종류와 제한, 인권 보장 제도 등 수업에서 배운 개념을 정확하게 사용했는가? 잘못 이해했거나 빠뜨린 개념은 없는가?
+3. 정책의 구체성: 정책 대상, 시행 주체, 실행 방법, 기간, 기대 효과와 평가 방법이 구체적으로 제시되어 있는가?
+
+# 응답 방식
+- 먼저 제안서의 강점 1가지를 짧게 인정해.
+- 기준마다 제안서의 문장을 직접 인용("…")하고, 그 부분에 대한 구체적인 반론이나 의문을 1~2개 제시해.
+- 반론마다 근거(사례, 통계, 반대 입장의 논리 등)를 함께 제시해.
+- 수정된 문장이나 정답을 직접 써 주지 말고, 학생이 고민해 볼 질문으로 마무리해.
+- 마지막에 너의 논박을 번호를 붙여 3~5개로 요약해. 학생은 이 요약을 보고 피드백 수용일지에 반론마다 '수용 / 부분 수용 / 불수용'과 그 이유를 적을 거야.
+
+# 대화 원칙
+- 학생이 재반박하면, 타당한 부분은 인정하고 그렇지 않은 부분은 근거를 들어 다시 논박해. 쉽게 물러서지도, 고집하지도 마.
+- 학생이 "고쳐 줘", "답 알려 줘"라고 해도 직접 써 주지 말고, 고칠 방향을 스스로 찾도록 질문해.
+- 고등학생 눈높이의 쉬운 말과 존댓말을 사용해.
+- 특정 집단을 비하하거나 인권 침해를 정당화하는 주장에는 동조하지 말고, 인권의 보편성을 근거로 바로잡아.</pre>
+          </div>
+          <div class="callout callout--tip">💡 <span>주제만 바꾸면 다른 단원에도 쓸 수 있습니다. ‘논박 기준’ 3가지를 수업의 평가 기준(루브릭)과 맞추면 학생의 수용일지를 평가하기도 쉬워집니다.</span></div>
         </div>
         <div class="step-foot"><label class="check"><input type="checkbox">완료</label></div>
       </article>
@@ -547,6 +701,20 @@
 
     <p class="footer">사회과 교사 연수 · AI와 함께하는 논쟁 수업</p>
   </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lb-bar">
+      <span class="lb-count" id="lb-count"></span>
+      <span class="lb-caption" id="lb-caption"></span>
+      <button class="lb-btn" id="lb-full" type="button" title="전체화면">⛶</button>
+      <button class="lb-btn" id="lb-close" type="button" title="닫기 (Esc)">✕</button>
+    </div>
+    <div class="lb-stage">
+      <button class="lb-nav lb-prev" id="lb-prev" type="button" aria-label="이전 장표">‹</button>
+      <img id="lb-img" alt="">
+      <button class="lb-nav lb-next" id="lb-next" type="button" aria-label="다음 장표">›</button>
+    </div>
+  </div>
 
   <div class="toast-container" id="toast-container"></div>
 
@@ -592,6 +760,8 @@
       li.querySelector('button').addEventListener('click', () => copyText(`${i + 1}. ${t}`));
       objList.appendChild(li);
     });
+    document.getElementById('copy-prompt').addEventListener('click', () =>
+      copyText(document.getElementById('prompt-text').textContent));
     document.getElementById('copy-all').addEventListener('click', () =>
       copyText(OBJECTIVES.map((t, i) => `${i + 1}. ${t}`).join('\n')));
 
@@ -638,6 +808,47 @@
     }
     window.addEventListener('hashchange', route);
     route();
+
+    // Slide lightbox
+    const slides = [...document.querySelectorAll('.slide')];
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    let cur = 0;
+    function showSlide(i) {
+      cur = (i + slides.length) % slides.length;
+      const img = slides[cur].querySelector('img');
+      lbImg.src = img.src; lbImg.alt = img.alt;
+      document.getElementById('lb-caption').textContent = img.alt;
+      document.getElementById('lb-count').textContent = `${cur + 1} / ${slides.length}`;
+    }
+    function openLb(i) { showSlide(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+    function closeLb() {
+      if (document.fullscreenElement) document.exitFullscreen();
+      lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = '';
+    }
+    slides.forEach((s, i) => s.addEventListener('click', () => openLb(i)));
+    document.getElementById('lb-prev').addEventListener('click', () => showSlide(cur - 1));
+    document.getElementById('lb-next').addEventListener('click', () => showSlide(cur + 1));
+    document.getElementById('lb-close').addEventListener('click', closeLb);
+    document.getElementById('lb-full').addEventListener('click', () => {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (lb.requestFullscreen) lb.requestFullscreen();
+    });
+    lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-stage')) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape' && !document.fullscreenElement) closeLb();
+      if (e.key === 'ArrowLeft') showSlide(cur - 1);
+      if (e.key === 'ArrowRight') showSlide(cur + 1);
+    });
+    let touchX = null;
+    lb.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) showSlide(cur + (dx < 0 ? 1 : -1));
+      touchX = null;
+    });
 
     // Mobile menu
     document.getElementById('menu-toggle').addEventListener('click', () => document.body.classList.toggle('nav-open'));
