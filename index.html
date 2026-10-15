@@ -686,7 +686,7 @@
       </div>
 
       <div class="slides-card">
-        <div class="flow-title">📱 완성된 웹앱 화면 미리보기 <span class="flow-example">클릭하면 크게 볼 수 있어요</span></div>
+        <div class="flow-title">📱 완성된 웹앱 화면 미리보기 <span class="flow-example">학생용 1~4 · 교사용 5~8 · 클릭하면 크게 볼 수 있어요</span></div>
         <div class="carousel">
           <div class="carousel-viewport">
             <div class="carousel-track">
@@ -694,6 +694,10 @@
               <button class="slide" type="button"><img src="images/app2.jpg" alt="2단계 · AI와 논박하기 (왼쪽: 내 초안, 오른쪽: AI 챗봇)" loading="lazy"></button>
               <button class="slide" type="button"><img src="images/app3.jpg" alt="3단계 · AI 피드백 성찰 일지 (말풍선마다 수용 · 부분 수용 · 불수용 선택)" loading="lazy"></button>
               <button class="slide" type="button"><img src="images/app4.jpg" alt="4단계 · 성찰 일지를 보며 최종 제안서 수정 · 제출" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/app5.jpg" alt="교사용 ① 로그인 화면 아래 ‘교사 관리자 입장’에 교사 전용 비밀번호 입력" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/app6.jpg" alt="교사용 ② 학생 목록별 제출 현황 (상태 · 단계 · 논박 횟수 · 성찰 일지 · 제출 시각)" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/app7.jpg" alt="교사용 ③ 학생 이름 클릭 → AI 챗봇 대화 내역" loading="lazy"></button>
+              <button class="slide" type="button"><img src="images/app8.jpg" alt="교사용 ④ 학생 이름 클릭 → 제안서 초안 · 최종안 비교 (성찰 일지 탭도 열람)" loading="lazy"></button>
             </div>
             <button class="carousel-nav carousel-prev" type="button" aria-label="이전 화면">‹</button>
             <button class="carousel-nav carousel-next" type="button" aria-label="다음 화면">›</button>
@@ -816,6 +820,15 @@
                 <div class="callout callout--tip">💡 <span>스크립트 속성에 넣은 키는 시트를 공유하거나 학생이 웹앱을 써도 보이지 않습니다. 키를 바꿀 때도 여기서 값만 수정하면 됩니다.</span></div>
               </li>
               <li>
+                <h4>교사 관리자 비밀번호 정하기</h4>
+                <p>학생 제출 내역을 열람하는 <b>교사 관리자 화면</b>의 비밀번호를 시트에서 정합니다.</p>
+                <ul>
+                  <li>구글시트 하단의 <span class="ui">Password</span> 탭 클릭</li>
+                  <li><span class="ui">A1</span> 셀에 원하는 교사 전용 비밀번호 입력 (학생들이 짐작하기 어려운 것으로)</li>
+                </ul>
+                <div class="callout callout--warn">⚠️ <span>이 비밀번호를 아는 사람은 <b>모든 학생의 제안서·AI 대화·성찰 일지</b>를 볼 수 있습니다. 시트를 다른 사람과 공유할 때 Password 탭이 함께 보인다는 점도 주의하세요.</span></div>
+              </li>
+              <li>
                 <h4>새 배포 만들기</h4>
                 <p>편집기 오른쪽 위 파란색 <span class="ui">배포</span> → <span class="ui">새 배포</span>를 클릭합니다.</p>
               </li>
@@ -845,6 +858,7 @@
               <li>
                 <h4>웹 앱 URL 복사 → 학생에게 공유</h4>
                 <p>배포가 끝나면 나오는 <b>웹 앱 URL</b>(<code>https://script.google.com/macros/s/.../exec</code>)을 복사해 학생에게 안내합니다.</p>
+                <p>교사도 <b>같은 URL</b>로 들어가, 로그인 화면 아래 <span class="ui">교사 관리자 입장</span>을 누르고 Password 탭 A1의 비밀번호를 입력하면 학생별 제출 현황을 볼 수 있습니다. 목록은 <span class="ui">새로고침</span> 버튼으로 최신화합니다.</p>
               </li>
             </ol>
             <div class="callout callout--warn">⚠️ <span><b>코드를 수정했다면?</b> <span class="ui">배포</span> → <span class="ui">배포 관리</span> → ✏️ 수정 → 버전을 <span class="ui">새 버전</span>으로 바꾸고 <span class="ui">배포</span>해야 학생 화면에 반영됩니다. (URL은 그대로 유지)</span></div>
